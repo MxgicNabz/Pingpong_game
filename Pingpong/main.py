@@ -1,6 +1,7 @@
 from pygame import *
 
 
+
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, player_speed, weight, height):
         super().__init__()
@@ -18,7 +19,7 @@ class GameSprite(sprite.Sprite):
 class Player(GameSprite):
     def update_r(self):
         keys = key.get_pressed()
-        if keys[K_UP] and self.rect.y > 5:
+        if keys [K_UP] and self.rect.y > 5:
             self.rect.y -= self.speed
         if keys[K_DOWN] and self.rect.y < win_height - 80:
             self.rect.y += self.speed
@@ -38,19 +39,22 @@ window = display.set_mode((win_width, win_height))
 window.fill(back)
 
 
+game = True
+finish = False
+clock = time.Clock()
+FPS = 60
 
 
 
-
-racket1 = Player('Platform_pingpong.jpeg', 30, 200, 4, 50, 150)
-racket2 = Player('Platform_pingpong.jpeg', 520, 200, 4, 50, 150)
+racket1 = Player('Platform_pingpong.jpeg', 10, 200, 4, 50, 150)
+racket2 = Player('Platform_pingpong.jpeg', 530, 200, 4, 50, 150)
 ball = GameSprite('Ball_pingpong.jpeg', 200, 200, 4, 50, 50)
 
 
 font.init()
 font = font.Font(None, 35)
-lose1 = font.render('PLAYER 1 LOSE!', True, (180, 0, 0))
-lose2 = font.render('PLAYER 2 LOSE!', True, (180, 0, 0))
+lose1 = font.render('Nabil LOSE!', True, (180, 0, 0))
+lose2 = font.render('Nihal LOSE!', True, (180, 0, 0))
 
 
 speed_x = 3
@@ -75,7 +79,7 @@ while game:
             speed_y *= 1
 
 
-        if ball.rect.y > win_height-50 or ball.rect.y <0:
+        if ball.rect.y > win_height - 50 or ball.rect.y < 0:
             speed_y *= -1
 
 
@@ -100,4 +104,3 @@ while game:
 
     display.update()
     clock.tick(FPS)
-    
